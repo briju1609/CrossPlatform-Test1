@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+   <head>
+      <title>Swipe Event</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet" href = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+      <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   
+<!-- Swipe Event -->   
+      <script>
+         $(document).on("pagecreate","#page1",function() {
+            $("p").on("swipe",function() {
+               $("span").text("swipe event occurred!!!");
+            });
+         });
+      </script>
+
+<!-- Orientation -->
+      <script>
+         $(document).on("pagecreate","#page1",function(event) {
+            $(window).on("orientationchange",function(e) {
+               if(e.orientation == "portrait") {
+                  $("p").text("portrait orientation!!!");
+               } else {
+                  $("p").text("landscape orientation!!!");
+               }
+            });
+         });
+      </script>
+
+<!-- Panels on swipe -->
+      <script>
+         $( document ).on( "pagecreate", "#page1", function() {
+            $( document ).on( "swipeleft swiperight", "#page1", function( e ) {
+               if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+                  if ( e.type === "swipeleft" ) {
+                     $( "#right-panel" ).panel( "open" );
+                  } else if ( e.type === "swiperight" ) {
+                     $( "#left-panel" ).panel( "open" );
+                  }
+               }
+            });
+         });
+      </script>
+   
+</head>
+<body>
+
+
+   <div data-role = "page" id = "page1">
+
+      	<!-- Header -->
+    <div data-role = "header" data-theme = "b">
+            <h2>Header</h2>
+             <a href = "#left-panel" data-icon = "carat-r" data-iconpos = "notext"  
+               class = "ui-nodisc-icon">Open left panel</a>
+         	</div>
+
+
+         <!-- Panel -->
+         <div data-role = "panel" id = "left-panel" data-theme = "b">
+            <p>This is left panel.</p>
+            
+            <!-- List -->
+            <ul data-role = "listview">
+            	<li><a href="#">The Last Leaf</a></li>
+            </ul>
+
+            <a href = "#" data-rel = "close" class = "ui-btn ui-btn-inline ui-icon-delete 
+               ui-btn-icon-left">Close Panel</a>
+         </div>
+
+         <!-- Swipe -->
+         <div data-role = "main" class = "ui-content">
+         	<h2>Swipe</h2>
+            <p>It will display the text when you swipe here.</p>
+            <span style = "color:orange"></span>
+         
+         	<h2>Orientation</h2>
+            <p>To see the orientation effect, you must rotate your window...</p>
+         </div>
+
+         <!-- Panel 
+         <div data-role  =  "main" class  =  "ui-content">
+         	<h2>Panel</h2>
+            <p>Click on the button to open Panel.</p>
+            <a href = "#panel1" class = "ui-btn ui-btn-inline">Open Panel</a>
+         </div>-->
+
+         <!-- Footer -->
+         <div data-role = "footer">
+            <h2>Footer</h2>
+         </div>
+      
+      </div>
+
+
+
+         
+         
+        
+         
+         
+         
+         
+      
+
+
+
+   </body>
+</html>
